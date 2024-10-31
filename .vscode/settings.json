@@ -1,4 +1,6 @@
 {
+  "files.associations": { "*.scss": "tailwindcss", "*.css": "tailwindcss" },
+  // "scss.lint.unknownAtRules": "ignore",
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit",
