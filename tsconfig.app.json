@@ -7,9 +7,12 @@
     "types": []
   },
   "files": [
-    "src/main.ts"
+    "src/main.ts",
+    "src/polyfills/array.ts",
+    "src/polyfills/date.ts",
+    "src/polyfills/number.ts",
+    "src/polyfills/object.ts",
+    "src/polyfills/string.ts"
   ],
-  "include": [
-    "src/**/*.d.ts"
-  ]
+  "include": ["src/**/*.d.ts"]
 }

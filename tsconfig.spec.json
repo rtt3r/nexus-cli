@@ -6,5 +6,12 @@
     "outDir": "./out-tsc/spec",
     "types": ["jasmine", "node"]
   },
+  "files": [
+    "src/polyfills/array.ts",
+    "src/polyfills/date.ts",
+    "src/polyfills/number.ts",
+    "src/polyfills/object.ts",
+    "src/polyfills/string.ts"
+  ],
   "include": ["src/**/*.spec.ts", "src/**/*.d.ts"]
 }
