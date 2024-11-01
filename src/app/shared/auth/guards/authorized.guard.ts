@@ -18,7 +18,6 @@ export class AuthorizedGuard extends KeycloakAuthGuard {
 
     // Force the user to log in if currently unauthenticated.
     if (!this.authenticated) {
-      debugger
       const redirectUrl = state.url === '/sign-out'
         ? ''
         : `${window.location.href}`;
