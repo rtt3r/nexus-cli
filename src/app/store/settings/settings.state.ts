@@ -1,13 +1,6 @@
-import { Language, Scheme, Theme } from '@/shared/config';
+import { AppSettings } from '@/shared/settings';
 
-export interface SettingsState {
-  language: Language,
-  scheme: Scheme,
-  theme: Theme
-}
-
-export const initialState: SettingsState = {
+export const initialState: AppSettings = {
   language: 'pt-br',
-  scheme: 'auto',
-  theme: 'theme-default'
+  theme: 'auto'
 };

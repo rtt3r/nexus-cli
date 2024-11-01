@@ -1,1 +1,2 @@
-export * from './paged-items';
+export * from './pagination-types';
+

@@ -1,21 +1,15 @@
-import { Language, Scheme, Theme } from '@/shared/config';
+import { AppSettings, Language, Theme } from '@/shared/settings';
 import { createFeatureSelector, createSelector, MemoizedSelector } from '@ngrx/store';
-import { AppState } from './../../store';
-import { SettingsState } from './settings.state';
+import { AppState } from '..';
 
-export const selectSettings: MemoizedSelector<AppState, SettingsState> = createFeatureSelector<SettingsState>('settings');
-
-export const selectScheme: MemoizedSelector<AppState, Scheme> = createSelector(
-  selectSettings,
-  (state: SettingsState): Scheme => state.scheme
-);
+export const selectSettings: MemoizedSelector<AppState, AppSettings> = createFeatureSelector<AppSettings>('settings');
 
 export const selectTheme: MemoizedSelector<AppState, Theme> = createSelector(
   selectSettings,
-  (state: SettingsState): Theme => state.theme
+  (state: AppSettings): Theme => state.theme
 );
 
 export const selectLanguage: MemoizedSelector<AppState, Language> = createSelector(
   selectSettings,
-  (state: SettingsState): Language => state.language
+  (state: AppSettings): Language => state.language
 );

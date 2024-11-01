@@ -12,7 +12,6 @@ import { provideRouterStore, routerReducer } from '@ngrx/router-store';
 import { provideStore } from '@ngrx/store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { APP_ROUTES } from './app.routes';
-import { NEXUS_CONFIG } from './shared/config';
 import { TranslocoHttpLoader } from './shared/i18n/transloco-http-loader';
 
 const { auth } = env;
@@ -46,6 +45,20 @@ export const appConfig: ApplicationConfig = {
       autoPause: true, // Pauses recording actions and state changes when the extension window is not open
       trace: false, //  If set to true, will include stack trace for every dispatched action, so you can see it in trace tab jumping directly to that part of code
       traceLimit: 75, // maximum stack trace frames to be stored (in case trace option was provided as true)
+    }),
+    // Transloco
+    provideTransloco({
+      config: {
+        availableLangs: [
+          { id: 'en', label: 'English' },
+          { id: 'pt-br', label: 'Português' },
+        ],
+        defaultLang: 'en',
+        // Remove this option if your application doesn't support changing language in runtime.
+        reRenderOnLangChange: true,
+        prodMode: !isDevMode(),
+      },
+      loader: TranslocoHttpLoader
     }),
     // Nexus
     // provideAuth(),
@@ -83,29 +96,6 @@ export const appConfig: ApplicationConfig = {
     //   },
     //   multi: true,
     //   deps: [KeycloakService]
-    // },
-    provideTransloco({
-      config: {
-        availableLangs: [
-          {
-            id: 'en',
-            label: 'English',
-          },
-          {
-            id: 'pt-br',
-            label: 'Português',
-          },
-        ],
-        defaultLang: 'en',
-        // Remove this option if your application doesn't support changing language in runtime.
-        reRenderOnLangChange: true,
-        prodMode: !isDevMode(),
-      },
-      loader: TranslocoHttpLoader
-    }),
-    {
-      provide: NEXUS_CONFIG,
-      useValue: {},
-    },
+    // }
   ],
 };

@@ -1,20 +1,4 @@
-// -----------------------------------------------------------------------------------------------------
-// @ AUTH UTILITIES
-//
-// Methods are derivations of the Auth0 Angular-JWT helper service methods
-// https://github.com/auth0/angular2-jwt
-// -----------------------------------------------------------------------------------------------------
-
 export class AuthUtils {
-  /**
-   * Constructor
-   */
-  constructor() {
-  }
-
-  // -----------------------------------------------------------------------------------------------------
-  // @ Public methods
-  // -----------------------------------------------------------------------------------------------------
 
   /**
    * Is token expired?
@@ -23,12 +7,11 @@ export class AuthUtils {
    * @param offsetSeconds
    */
   static isTokenExpired(token: string, offsetSeconds?: number): boolean {
-    // Return if there is no token
+
     if (!token || token === '') {
       return true;
     }
 
-    // Get the expiration date
     const date = this._getTokenExpirationDate(token);
 
     offsetSeconds = offsetSeconds || 0;
@@ -37,13 +20,8 @@ export class AuthUtils {
       return true;
     }
 
-    // Check if the token is expired
     return !(date.valueOf() > new Date().valueOf() + offsetSeconds * 1000);
   }
-
-  // -----------------------------------------------------------------------------------------------------
-  // @ Private methods
-  // -----------------------------------------------------------------------------------------------------
 
   /**
    * Base64 decoder
@@ -52,7 +30,7 @@ export class AuthUtils {
    * @param str
    * @private
    */
-  private static _b64decode(str: string): string {
+  private static _base64Decode(str: string): string {
     const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
     let output = '';
 
@@ -95,10 +73,10 @@ export class AuthUtils {
    * @param str
    * @private
    */
-  private static _b64DecodeUnicode(str: any): string {
+  private static _base64DecodeUnicode(str: any): string {
     return decodeURIComponent(
       Array.prototype.map
-        .call(this._b64decode(str), (c: any) => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2))
+        .call(this._base64Decode(str), (c: any) => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2))
         .join(''),
     );
   }
@@ -131,7 +109,7 @@ export class AuthUtils {
           throw Error('Illegal base64url string!');
         }
     }
-    return this._b64DecodeUnicode(output);
+    return this._base64DecodeUnicode(output);
   }
 
   /**

@@ -35,6 +35,9 @@ importers:
       '@jsverse/transloco':
         specifier: 7.5.0
         version: 7.5.0(@angular/core@18.2.10(rxjs@7.8.1)(zone.js@0.14.10))(typescript@5.5.4)
+      '@jsverse/transloco-utils':
+        specifier: ^7.0.2
+        version: 7.0.2(typescript@5.5.4)
       '@ngrx/effects':
         specifier: ^18.1.1
         version: 18.1.1(@angular/core@18.2.10(rxjs@7.8.1)(zone.js@0.14.10))(@ngrx/store@18.1.1(@angular/core@18.2.10(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(rxjs@7.8.1)
@@ -100,8 +103,8 @@ importers:
         specifier: ^18.1.1
         version: 18.1.1(@typescript-eslint/utils@8.12.2(eslint@9.13.0(jiti@1.21.6))(typescript@5.5.4))(eslint@9.13.0(jiti@1.21.6))(typescript@5.5.4)
       '@stylistic/eslint-plugin-ts':
-        specifier: ^2.10.0
-        version: 2.10.0(eslint@9.13.0(jiti@1.21.6))(typescript@5.5.4)
+        specifier: ^2.10.1
+        version: 2.10.1(eslint@9.13.0(jiti@1.21.6))(typescript@5.5.4)
       '@types/jasmine':
         specifier: ~5.1.4
         version: 5.1.4
@@ -1821,8 +1824,8 @@ packages:
   '@socket.io/component-emitter@3.1.2':
     resolution: {integrity: sha512-9BCxFwvbGg/RsZK9tjXd8s4UcwR0MWeFQ1XEKIQVVvAGJyINdrqKMcTRyLoK8Rse1GjzLV9cwjWV1olXRWEXVA==}
 
-  '@stylistic/eslint-plugin-ts@2.10.0':
-    resolution: {integrity: sha512-/pydlXkvbvn0MUrXzxfLElne/wr5Mb5fC+inncpBUB2nvSUdSjiNDBJC0ehbg0Z6U3FD2XNotOIQV9srHbP3nQ==}
+  '@stylistic/eslint-plugin-ts@2.10.1':
+    resolution: {integrity: sha512-XmXcixLPYfW0Z4Nf2ChnQ7CnfALNy/5gwNh22POiy64xreVYtiag4+yxN2SBEalEfoOAwDnqwDKam7e7XeoKTA==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     peerDependencies:
       eslint: '>=8.40.0'
@@ -6711,7 +6714,7 @@ snapshots:
 
   '@socket.io/component-emitter@3.1.2': {}
 
-  '@stylistic/eslint-plugin-ts@2.10.0(eslint@9.13.0(jiti@1.21.6))(typescript@5.5.4)':
+  '@stylistic/eslint-plugin-ts@2.10.1(eslint@9.13.0(jiti@1.21.6))(typescript@5.5.4)':
     dependencies:
       '@typescript-eslint/utils': 8.12.2(eslint@9.13.0(jiti@1.21.6))(typescript@5.5.4)
       eslint: 9.13.0(jiti@1.21.6)

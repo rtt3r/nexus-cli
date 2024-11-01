@@ -1,11 +1,11 @@
-import { Language, Scheme, Theme } from '@/shared/config';
+import { Language, Theme } from '@/shared/settings';
 import { createAction, props } from '@ngrx/store';
 
 export const actionKey = '[Settings]';
 
 export const changeScheme = createAction(
   `${actionKey} Change Scheme`,
-  props<{ scheme: Scheme }>()
+  props<{ scheme: Theme }>()
 );
 
 export const changeTheme = createAction(

@@ -1,4 +1,3 @@
-import { NexusConfigService } from '@/shared/config';
 import { LocalStorageService } from '@/shared/storage/storage.service';
 import { TitleService } from '@/shared/title/title.service';
 import { inject } from '@angular/core';
@@ -8,42 +7,8 @@ import { Actions, createEffect, ofType, ROOT_EFFECTS_INIT } from '@ngrx/effects'
 import { select, Store } from '@ngrx/store';
 import { distinctUntilChanged, filter, tap, withLatestFrom } from 'rxjs/operators';
 import { selectRouteStateUrl } from '../router/router.selectors';
-import { changeLanguage, changeScheme, changeTheme } from './settings.actions';
-import { selectLanguage, selectScheme, selectSettings, selectTheme } from './settings.selectors';
-
-export const changeScheme$ = createEffect(
-  (
-    store$: Store = inject(Store),
-    actions$: Actions = inject(Actions),
-    nexusConfigService$: NexusConfigService = inject(NexusConfigService)
-  ) => {
-    return actions$.pipe(
-      ofType(ROOT_EFFECTS_INIT, changeScheme),
-      withLatestFrom(store$.pipe(select(selectScheme))),
-      tap(([_, scheme]) => {
-        nexusConfigService$.config = { scheme };
-      })
-    );
-  },
-  { functional: true, dispatch: false }
-);
-
-export const changeTheme$ = createEffect(
-  (
-    store$: Store = inject(Store),
-    actions$: Actions = inject(Actions),
-    nexusConfigService$: NexusConfigService = inject(NexusConfigService)
-  ) => {
-    return actions$.pipe(
-      ofType(ROOT_EFFECTS_INIT, changeTheme),
-      withLatestFrom(store$.pipe(select(selectTheme))),
-      tap(([_, theme]) => {
-        nexusConfigService$.config = { theme };
-      })
-    );
-  },
-  { functional: true, dispatch: false }
-);
+import { changeLanguage } from './settings.actions';
+import { selectLanguage, selectSettings } from './settings.selectors';
 
 export const setLanguageEffect$ = createEffect(
   (
@@ -95,12 +60,11 @@ export const persistSettingsEffect$ = createEffect(
         select(selectSettings),
         distinctUntilChanged(),
         tap(settings => {
-          const { scheme, theme, language } = settings;
+          const { theme, language } = settings;
 
           storageService$.setItem(
             'settings',
             {
-              scheme,
               theme,
               language
             });

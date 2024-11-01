@@ -3,7 +3,7 @@ import { User, UserProfile } from '@/shared/user/user.types';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, ReplaySubject, take, tap } from 'rxjs';
-import { PagedItems } from '../pagination/paged-items';
+import { PagedItems } from '../pagination/pagination-types';
 
 const API_URL = env.core.url;
 
@@ -15,10 +15,6 @@ export class UserService {
    * Constructor
    */
   constructor(private _httpClient: HttpClient) { }
-
-  // -----------------------------------------------------------------------------------------------------
-  // @ Accessors
-  // -----------------------------------------------------------------------------------------------------
 
   /**
    * Setter & getter for user
@@ -33,10 +29,6 @@ export class UserService {
   get user$(): Observable<User> {
     return this._user.asObservable();
   }
-
-  // -----------------------------------------------------------------------------------------------------
-  // @ Public methods
-  // -----------------------------------------------------------------------------------------------------
 
   /**
    * Get the current logged in user data

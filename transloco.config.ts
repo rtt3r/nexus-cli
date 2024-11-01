@@ -1,9 +1,3 @@
-import {TranslocoGlobalConfig} from '@jsverse/transloco-utils';
-    
-const config: TranslocoGlobalConfig = {
-  rootTranslationsPath: 'src/assets/i18n/',
-  langs: [ '(en', 'pt-br)' ],
-  keysManager: {}
+module.exports = {
+  rootTranslationsPath: 'src/assets/i18n/'
 };
-    
-export default config;
