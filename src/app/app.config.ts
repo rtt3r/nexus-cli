@@ -81,12 +81,11 @@ export const appConfig: ApplicationConfig = {
               clientId: clientId
             },
             initOptions: {
-              onLoad: 'login-required',
-              checkLoginIframe: false,
-              checkLoginIframeInterval: 60,
-              flow: 'standard',
-              pkceMethod: 'S256',
-              responseMode: 'query'
+              onLoad: 'check-sso',
+              silentCheckSsoRedirectUri: `${window.location.origin}/assets/silent-check-sso.html`,
+              silentCheckSsoFallback: false,
+              responseMode: 'fragment',
+              redirectUri: `${window.location.origin}`
             },
             enableBearerInterceptor: true,
             bearerExcludedUrls: ['/assets']

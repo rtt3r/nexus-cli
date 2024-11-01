@@ -12,7 +12,12 @@ export class UnauthorizedGuard extends KeycloakAuthGuard {
   }
 
   public async isAccessAllowed(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    return !this.authenticated;
+    if (!this.authenticated) {
+      return true;
+    }
+
+    this.router.navigate(['/dashboard']);
+    return false;
   }
 }
 

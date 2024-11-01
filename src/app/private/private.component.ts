@@ -8,6 +8,4 @@ import { RouterOutlet } from '@angular/router';
     RouterOutlet
   ],
 })
-export class PrivateComponent {
-
-}
+export class PrivateComponent { }

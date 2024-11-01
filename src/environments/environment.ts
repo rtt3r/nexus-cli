@@ -9,7 +9,7 @@ export const environment = {
     name: 'Nexus'
   },
   auth: {
-    url: 'http://192.168.0.193:8081',
+    url: 'http://192.168.0.151:8081',
     realm: 'nexus',
     clientId: 'nexus-cli'
   },

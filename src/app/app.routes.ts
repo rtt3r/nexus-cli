@@ -7,13 +7,11 @@ import { PublicComponent } from './public/public.component';
 
 const privateGuard: CanActivateFn | CanActivateChildFn =
   (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
-    debugger
     return inject(AuthorizedGuard).canActivate(route, state);
   };
 
 const publicGuard: CanActivateFn | CanActivateChildFn =
   (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
-    debugger
     return inject(UnauthorizedGuard).canActivate(route, state);
   };
 
