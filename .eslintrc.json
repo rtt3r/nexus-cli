@@ -11,7 +11,8 @@
         "plugin:@typescript-eslint/stylistic",
         "plugin:@angular-eslint/template/process-inline-templates",
         "plugin:prettier/recommended",
-        "prettier"
+        "prettier",
+        "plugin:@ngrx/all"
       ],
       "rules": {
         "@angular-eslint/directive-selector": [
