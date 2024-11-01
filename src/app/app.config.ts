@@ -1,9 +1,9 @@
-import { environment as env } from '@/environments/environment';
+import { environment } from '@/environments/environment';
 import { metaReducers } from '@/store/meta-reducers';
 import { CustomRouterStateSerializer } from '@/store/router';
 import { settingsEffects, settingsReducers } from '@/store/settings';
 import { provideHttpClient } from '@angular/common/http';
-import { ApplicationConfig, isDevMode } from '@angular/core';
+import { APP_INITIALIZER, ApplicationConfig, importProvidersFrom, isDevMode } from '@angular/core';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { PreloadAllModules, provideRouter, withInMemoryScrolling, withPreloading } from '@angular/router';
 import { provideTransloco } from '@jsverse/transloco';
@@ -11,16 +11,12 @@ import { provideEffects } from '@ngrx/effects';
 import { provideRouterStore, routerReducer } from '@ngrx/router-store';
 import { provideStore } from '@ngrx/store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
+import { KeycloakAngularModule, KeycloakEventType, KeycloakService } from 'keycloak-angular';
 import { APP_ROUTES } from './app.routes';
 import { TranslocoHttpLoader } from './shared/i18n/transloco-http-loader';
 
-const { auth } = env;
-
 export const appConfig: ApplicationConfig = {
   providers: [
-    // importProvidersFrom(
-    //   KeycloakAngularModule
-    // ),
     provideAnimations(),
     provideHttpClient(),
     provideRouter(
@@ -60,42 +56,45 @@ export const appConfig: ApplicationConfig = {
       },
       loader: TranslocoHttpLoader
     }),
+    importProvidersFrom(KeycloakAngularModule),
     // Nexus
-    // provideAuth(),
-    // {
-    //   provide: APP_INITIALIZER,
-    //   useFactory: (keycloak: KeycloakService) => {
+    {
+      provide: APP_INITIALIZER,
+      useFactory: (keycloak: KeycloakService) => {
 
-    //     keycloak.keycloakEvents$
-    //       .subscribe({
-    //         next(event) {
-    //           if (event.type == KeycloakEventType.OnTokenExpired) {
-    //             keycloak.updateToken(20);
-    //           }
-    //         }
-    //       });
+        keycloak.keycloakEvents$
+          .subscribe({
+            next(event) {
+              if (event.type == KeycloakEventType.OnTokenExpired) {
+                keycloak.updateToken(20);
+              }
+            }
+          });
 
-    //     return () =>
-    //       keycloak.init({
-    //         config: {
-    //           url: auth.url,
-    //           realm: auth.realm,
-    //           clientId: auth.clientId
-    //         },
-    //         initOptions: {
-    //           onLoad: 'login-required',
-    //           checkLoginIframe: false,
-    //           checkLoginIframeInterval: 60,
-    //           flow: 'standard',
-    //           pkceMethod: 'S256',
-    //           responseMode: 'query'
-    //         },
-    //         enableBearerInterceptor: true,
-    //         bearerExcludedUrls: ['/assets']
-    //       });
-    //   },
-    //   multi: true,
-    //   deps: [KeycloakService]
-    // }
+        return () => {
+          const { auth: { url, realm, clientId } } = environment;
+
+          return keycloak.init({
+            config: {
+              url: url,
+              realm: realm,
+              clientId: clientId
+            },
+            initOptions: {
+              onLoad: 'login-required',
+              checkLoginIframe: false,
+              checkLoginIframeInterval: 60,
+              flow: 'standard',
+              pkceMethod: 'S256',
+              responseMode: 'query'
+            },
+            enableBearerInterceptor: true,
+            bearerExcludedUrls: ['/assets']
+          });
+        }
+      },
+      multi: true,
+      deps: [KeycloakService]
+    }
   ],
 };

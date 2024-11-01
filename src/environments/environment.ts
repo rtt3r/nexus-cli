@@ -6,8 +6,7 @@ export const environment = {
   production: false,
   debug: true,
   app: {
-    name: 'Nexus Talent Hub',
-    i18nPrefix: '',
+    name: 'Nexus'
   },
   auth: {
     url: 'http://192.168.0.193:8081',

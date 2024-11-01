@@ -3,7 +3,7 @@ import { ActivatedRouteSnapshot, Router, RouterStateSnapshot } from '@angular/ro
 import { KeycloakAuthGuard, KeycloakService } from 'keycloak-angular';
 
 @Injectable({ providedIn: 'root' })
-export class NoAuthGuard extends KeycloakAuthGuard {
+export class UnauthorizedGuard extends KeycloakAuthGuard {
   constructor(
     protected override readonly router: Router,
     protected readonly keycloak: KeycloakService
