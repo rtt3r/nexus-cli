@@ -1,3 +1,4 @@
+import { ButtonComponent } from "@/shared/components/button";
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { KeycloakService } from 'keycloak-angular';
@@ -7,7 +8,8 @@ import { KeycloakService } from 'keycloak-angular';
   standalone: true,
   templateUrl: './dashboard-page.component.html',
   imports: [
-    CommonModule
+    CommonModule,
+    ButtonComponent
   ],
 })
 export class DashboardPageComponent {

@@ -83,6 +83,7 @@ export const appConfig: ApplicationConfig = {
             initOptions: {
               onLoad: 'check-sso',
               silentCheckSsoRedirectUri: `${window.location.origin}/assets/silent-check-sso.html`,
+              checkLoginIframeInterval: 60,
               silentCheckSsoFallback: false,
               responseMode: 'fragment',
               redirectUri: `${window.location.origin}`
