@@ -3,7 +3,9 @@ import defaultTheme from 'tailwindcss/defaultTheme';
 
 const config: Config = {
   darkMode: ['class'],
-  content: ['./src/**/*.{html,ts}'],
+  content: [
+    './src/**/*.{html,ts}'
+  ],
   theme: {
     container: {
       center: true,
@@ -18,7 +20,7 @@ const config: Config = {
           'Nunito',
           ...defaultTheme.fontFamily.sans,
         ]
-      },
+      }
     },
   }
 };
