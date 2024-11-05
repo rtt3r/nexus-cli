@@ -1,3 +1,4 @@
+import { ThemeSelectorComponent } from '@/shared/components/theme-selector/theme-selector.component';
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { KeycloakService } from 'keycloak-angular';
@@ -7,7 +8,8 @@ import { KeycloakService } from 'keycloak-angular';
   standalone: true,
   templateUrl: './dashboard-page.component.html',
   imports: [
-    CommonModule
+    CommonModule,
+    ThemeSelectorComponent
   ],
 })
 export class DashboardPageComponent {

@@ -53,6 +53,7 @@
     "@typescript-eslint/parser": "8.12.2",
     "angular-eslint": "18.4.0",
     "autoprefixer": "^10.4.20",
+    "daisyui": "^4.12.14",
     "eslint": "^9.13.0",
     "eslint-config-prettier": "^9.1.0",
     "jasmine-core": "~5.4.0",

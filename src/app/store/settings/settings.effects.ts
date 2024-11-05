@@ -1,5 +1,6 @@
 import { LocalStorageService } from '@/shared/storage/storage.service';
 import { TitleService } from '@/shared/title/title.service';
+import { DOCUMENT } from '@angular/common';
 import { inject } from '@angular/core';
 import { ActivationEnd, Router } from '@angular/router';
 import { TranslocoService } from '@jsverse/transloco';
@@ -7,8 +8,28 @@ import { Actions, createEffect, ofType, ROOT_EFFECTS_INIT } from '@ngrx/effects'
 import { select, Store } from '@ngrx/store';
 import { distinctUntilChanged, filter, tap, withLatestFrom } from 'rxjs/operators';
 import { selectRouteStateUrl } from '../router/router.selectors';
-import { changeLanguage } from './settings.actions';
-import { selectLanguage, selectSettings } from './settings.selectors';
+import { changeLanguage, changeTheme } from './settings.actions';
+import { selectLanguage, selectSettings, selectTheme } from './settings.selectors';
+
+export const changeTheme$ = createEffect(
+  (
+    store$: Store = inject(Store),
+    actions$: Actions = inject(Actions),
+    document: Document = inject(DOCUMENT),
+  ) => {
+    return actions$.pipe(
+      ofType(ROOT_EFFECTS_INIT, changeTheme),
+      withLatestFrom(store$.pipe(select(selectTheme))),
+      tap(([_, theme]) => {
+        // document.documentElement.classList.remove('auto', 'light', 'dark');
+        // document.documentElement.classList.add(theme);
+
+        document.documentElement.setAttribute('data-theme', theme)
+      })
+    );
+  },
+  { functional: true, dispatch: false }
+);
 
 export const setLanguageEffect$ = createEffect(
   (

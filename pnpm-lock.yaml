@@ -129,6 +129,9 @@ importers:
       autoprefixer:
         specifier: ^10.4.20
         version: 10.4.20(postcss@8.4.47)
+      daisyui:
+        specifier: ^4.12.14
+        version: 4.12.14(postcss@8.4.47)
       eslint:
         specifier: ^9.13.0
         version: 9.13.0(jiti@1.21.6)
@@ -2472,6 +2475,9 @@ packages:
   css-select@5.1.0:
     resolution: {integrity: sha512-nwoRF1rvRRnnCqqY7updORDsuqKzqYJ28+oSMaJMMgOauh3fvwHqMS7EZpIPqK8GL+g9mKxF1vP/ZjSeNjEVHg==}
 
+  css-selector-tokenizer@0.8.0:
+    resolution: {integrity: sha512-Jd6Ig3/pe62/qe5SBPTN8h8LeUg/pT4lLgtavPf7updwwHpvFzxvOQBHYj2LZDMjUnBzgvIUSjRcf6oT5HzHFg==}
+
   css-what@6.1.0:
     resolution: {integrity: sha512-HTUrgRJ7r4dsZKU6GjmpfRK1O76h97Z8MfS1G0FozR+oF2kG6Vfe8JE6zwrkbxigziPHinCJ+gCPjA9EaBDtRw==}
     engines: {node: '>= 6'}
@@ -2481,8 +2487,16 @@ packages:
     engines: {node: '>=4'}
     hasBin: true
 
+  culori@3.3.0:
+    resolution: {integrity: sha512-pHJg+jbuFsCjz9iclQBqyL3B2HLCBF71BwVNujUYEvCeQMvV97R59MNK3R2+jgJ3a1fcZgI9B3vYgz8lzr/BFQ==}
+    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
+
   custom-event@1.0.1:
     resolution: {integrity: sha512-GAj5FOq0Hd+RsCGVJxZuKaIDXDf3h6GQoNEjFgbLLI/trgtavwUbSnZ5pVfg27DVCaWjIohryS0JFwIJyT2cMg==}
+
+  daisyui@4.12.14:
+    resolution: {integrity: sha512-hA27cdBasdwd4/iEjn+aidoCrRroDuo3G5W9NDKaVCJI437Mm/3eSL/2u7MkZ0pt8a+TrYF3aT2pFVemTS3how==}
+    engines: {node: '>=16.9.0'}
 
   date-format@4.0.14:
     resolution: {integrity: sha512-39BOQLs9ZjKh0/patS9nrT8wc3ioX3/eA/zgbKNopnF2wCqJEoxywwwElATYvRsXdnOxA/OQeQoFZ3rFjVajhg==}
@@ -2790,6 +2804,9 @@ packages:
 
   fast-uri@3.0.3:
     resolution: {integrity: sha512-aLrHthzCjH5He4Z2H9YZ+v6Ujb9ocRuW6ZzkJQOrTxleEijANq4v1TsaPaVG1PZcuurEzrLcWRyYBYXD5cEiaw==}
+
+  fastparse@1.1.2:
+    resolution: {integrity: sha512-483XLLxTVIwWK3QTrMGRqUfUpoOs/0hbQrl2oz4J0pAcm3A3bu84wxTFqGqkJzewCLdME38xJLJAxBABfQT8sQ==}
 
   fastq@1.17.1:
     resolution: {integrity: sha512-sRVD3lWVIXWg6By68ZN7vho9a1pQcN/WBFaAAsDDFzlJjvoGx0P8z7V1t72grFJfJhu3YPZBuu25f7Kaw2jN1w==}
@@ -7485,11 +7502,27 @@ snapshots:
       domutils: 3.1.0
       nth-check: 2.1.1
 
+  css-selector-tokenizer@0.8.0:
+    dependencies:
+      cssesc: 3.0.0
+      fastparse: 1.1.2
+
   css-what@6.1.0: {}
 
   cssesc@3.0.0: {}
 
+  culori@3.3.0: {}
+
   custom-event@1.0.1: {}
+
+  daisyui@4.12.14(postcss@8.4.47):
+    dependencies:
+      css-selector-tokenizer: 0.8.0
+      culori: 3.3.0
+      picocolors: 1.1.1
+      postcss-js: 4.0.1(postcss@8.4.47)
+    transitivePeerDependencies:
+      - postcss
 
   date-format@4.0.14: {}
 
@@ -7869,6 +7902,8 @@ snapshots:
   fast-levenshtein@2.0.6: {}
 
   fast-uri@3.0.3: {}
+
+  fastparse@1.1.2: {}
 
   fastq@1.17.1:
     dependencies:
